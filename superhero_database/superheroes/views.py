@@ -15,7 +15,10 @@ def index(request):
 
 def detail(request, superhero_id):
     pick_superhero = Superhero.objects.get(pk=superhero_id)
-    return render(request, 'superheroes/index.html', pick_superhero)
+    context = {
+        'pick_superhero': pick_superhero
+    }
+    return render(request, 'superheroes/detail.html', context)
 
 
 def create(request):
@@ -24,9 +27,9 @@ def create(request):
         alter_ego = request.POST.get('alter_ego')
         primary_ability = request.POST.get('primary_ability')
         alternate_ability = request.POST.get('alternate_ability')
-        catch_phrase = request.POST.get('catch_phrase')
+        catchphrase = request.POST.get('catchphrase')
         new_superhero = Superhero(name=name, alter_ego=alter_ego, primary_ability=primary_ability,
-                                  alternate_ability=alternate_ability, catch_phrase=catch_phrase,)
+                                  alternate_ability=alternate_ability, catchphrase=catchphrase,)
         new_superhero.save()
         return HttpResponseRedirect(reverse('superheroes:index'))
     else:
