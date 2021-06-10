@@ -16,7 +16,7 @@ def index(request):
 def detail(request, superhero_id):
     pick_superhero = Superhero.objects.get(pk=superhero_id)
     context = {
-        'pick_superhero': pick_superhero
+        'Superhero': pick_superhero
     }
     return render(request, 'superheroes/detail.html', context)
 
@@ -34,3 +34,5 @@ def create(request):
         return HttpResponseRedirect(reverse('superheroes:index'))
     else:
         return render(request, 'superheroes/create.html')
+
+

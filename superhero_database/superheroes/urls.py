@@ -5,8 +5,8 @@ from .import views
 app_name = 'superheroes'
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:superhero_id>/', views.detail, name='detail'),
-    path('new/', views.create, name='create_new_movie')
+    path('<int:superhero_id>/', views.detail, name='hero_detail'),
+    path('create/', views.create, name='create_superhero'),
 ]
 
 
