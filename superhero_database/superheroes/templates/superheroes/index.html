@@ -1,46 +1,35 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <meta charset="utf-8">
-  <title>{% block title %}Superhero Database{% endblock %}</title>
-    </head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+    >
+    <link rel="stylesheet" >
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,
+          user-scalable=no,
+          initial-scale=1.0, maximum-scale=1.0,
+          minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge"
+    >
+
+    <title>Superhero Index</title>
+</head>
 <body>
-
-
-
-<h1>Super Hero Database</h1>
-<ul>
-    {% for Superhero in all_superheroes %}
-    <li><h2> {{Superhero.name}}</h2>
-
-    </li>
-    {% endfor %}
-</ul>
+{% load static %}
+    <ul>
+        {% for Superhero in all_superheroes %}
+        <li><h2>{{Superhero.name}}  </h2>
+        <li><button type="button" class="btn"> <a href="{% url 'superheroes:detail_superhero' Superhero.id %}"> Superhero Details</a></button></li>
+        <li> <button type="button" class="btn"><a href="{% url 'superheroes:update_superhero' Superhero.id %}">Update Superhero</a></button></li>
+        <li><button type="button" class="btn"><a href="{% url 'superheroes:delete_superhero' Superhero.id %}">Delete Superhero</a></button></li>
+        {% endfor %}
+        <li> <button type="button" class="btn btn-warning btn-lg"><a href="{% url 'superheroes:create_superhero' %}"> Create a New Superhero</a></button></li>
+    </ul>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
-<ul>
-    {% for Superhero in all_superheros %}
-    <li>
-        <h2>{{Superhero.name}}</h2>
-        <button type="button" class="btn"> <a href="{% url 'superheros:detail' Superhero.id %}"> Superhero Details</a></button></li>
-     <li>
-         <button type="button" class="btn"><a href="{% url 'superheros:update' Superhero.id %}">Update Superhero</a></button></li>
-    <li>
-        <button type="button" class="btn"><a href="{% url 'superheros:delete' Superhero.id %}">Delete Superhero</a></button></li>
-    {% endfor %}
-    <li>
-        <button type="button" class="btn"><a href="{% url 'superheroes:create_superhero' %}"> Create New Superhero</a></button></li>
-</ul>
-
-
-  <main>
-    <h1>{% block header %} {% endblock %}</h1>
-    {% block content %}
-    {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-            crossorigin="anonymous"></script>
-  </main>
-
 </html>
